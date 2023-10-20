@@ -36,8 +36,14 @@ INSTALLED_APPS = [
 	"django.contrib.messages",
 	"django.contrib.staticfiles",
 	"django_extensions",
+	"crispy_forms",
+	"crispy_bootstrap4",
 	"app"
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
 	"django.middleware.security.SecurityMiddleware",
@@ -125,4 +131,5 @@ STATICFILES_DIRS = [
 AUTH_USER_MODEL = "app.User"
 
 AUTH_GROUP_MODEL = 'app.CustomGroup'
+
 
