@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Group List
+    <a href=""
+       class="btn btn-primary link-to-page ms-5 mt-5">
+      Create
+    </a>
+  </h1>
+  <hr>
+  {% if group_list %}
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for group in group_list %}
+        <tr>
+          <th scope="row">{{ group.id }}</th>
+          <td>{{ group.name }}</td>
+          {% for permission in group.permissions.all %}
+            <td>{{ permission.name }}</td>
+          {% endfor %}
+          <td><a href="" class="btn btn-outline-gray">Edit Group</a></td>
+      </tbody>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>There are no groups</p>
+  {% endif %}
+{% endblock %}
