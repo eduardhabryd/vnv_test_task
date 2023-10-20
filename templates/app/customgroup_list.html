@@ -3,7 +3,7 @@
 {% block content %}
   <h1>
     Group List
-    <a href=""
+    <a href="{% url 'app:group-create' %}"
        class="btn btn-primary link-to-page ms-5 mt-5">
       Add Group
     </a>
@@ -15,14 +15,8 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Name</th>
-        <th scope="col">Data Analytics</th>
-        <th scope="col">Services Analytics</th>
-        <th scope="col">Voice Analytics</th>
-        <th scope="col">Queue Stats</th>
-        <th scope="col">Voice Stats</th>
-        <th scope="col">Video</th>
-        <th scope="col">Smart Access</th>
-        <th scope="col">Diagrams</th>
+        <th scope="col">Desctiption</th>
+        <th scope="col">Actions</th>
       </tr>
       </thead>
       <tbody>
@@ -30,65 +24,12 @@
         <tr>
           <th scope="row">{{ group.id }}</th>
           <td>{{ group.name }}</td>
+          <td>{{ group.description }}</td>
           <td>
-            {% if group.data_analytics %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled/>
-            {% else %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled/>
+            <a href="{% url 'app:group-update' group.id %}" class="btn btn-outline-gray btn-sm">Edit</a>
+            {% if not group.users.exists %}
+            <a href="{% url 'app:group-delete' group.id %}" class="btn btn-outline-danger btn-sm ms-2">Delete</a>
             {% endif %}
-          </td>
-          <td>
-            {% if group.services_analytics %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled/>
-            {% else %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled/>
-            {% endif %}
-          </td>
-          <td>
-            {% if group.voice_analytics %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled/>
-            {% else %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled/>
-            {% endif %}
-          </td>
-          <td>
-            {% if group.queue_stats %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled/>
-            {% else %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled/>
-            {% endif %}
-          </td>
-          <td>
-            {% if group.voice_stats %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled/>
-            {% else %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled/>
-            {% endif %}
-          </td>
-          <td>
-            {% if group.video %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled/>
-            {% else %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled/>
-            {% endif %}
-          </td>
-          <td>
-            {% if group.smart_access %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled/>
-            {% else %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled/>
-            {% endif %}
-          </td>
-          <td>
-            {% if group.diagrams %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled/>
-            {% else %}
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled/>
-            {% endif %}
-          </td>
-          <td>
-            <a href="" class="btn btn-outline-gray btn-sm mb-2">Edit</a>
-            <a href="" class="btn btn-outline-danger btn-sm">Delete</a>
           </td>
       </tbody>
       {% endfor %}
