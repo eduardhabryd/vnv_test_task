@@ -3,9 +3,9 @@
 {% block content %}
   <h1>
     User List
-    <a href=""
+    <a href="{% url 'app:user-create' %}"
        class="btn btn-primary link-to-page ms-5 mt-5">
-      Create
+      Add User
     </a>
   </h1>
   <hr>
@@ -25,9 +25,18 @@
         <tr>
           <th scope="row">{{ user.id }}</th>
           <td>{{ user.email }}</td>
-          <td>{{ user.groups }}</td>
-          <td>{{ user.is_staff }}</td>
-          <td><a href="" class="btn btn-outline-gray">Edit User</a></td>
+          <td>{{ user.group }}</td>
+          <td>
+            {% if user.is_staff %}
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled/>
+            {% else %}
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled/>
+            {% endif %}
+          </td>
+          <td>
+            <a href="{% url 'app:user-update' user.id %}" class="btn btn-outline-gray">Edit</a>
+            <a href="" class="btn btn-outline-danger">Delete</a>
+          </td>
       </tbody>
       {% endfor %}
     </table>
