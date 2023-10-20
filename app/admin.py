@@ -1,10 +1,5 @@
 from django.contrib import admin
-from django.contrib.auth.models import Group
+from app.models import CustomUser, CustomGroup
 
-from app.models import User, CustomGroup
-
-admin.site.unregister(Group)
-
-admin.site.register(User)
+admin.site.register(CustomUser)
 admin.site.register(CustomGroup)
-
