@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    User List
+    <a href="{% url 'app:user-create' %}"
+       class="btn btn-primary link-to-page ms-5 mt-5">
+      Add User
+    </a>
+  </h1>
+  <hr>
+  {% if customuser_list %}
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Username</th>
+        <th scope="col">Created</th>
+        <th scope="col">Group</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for user in customuser_list %}
+        <tr>
+          <th scope="row">{{ user.id }}</th>
+          <td>{{ user.username }}</td>
+          <td>{{ user.created }}</td>
+          <td>{{ user.group }}</td>
+          <td>
+            <a href="{% url 'app:user-update' user.id %}" class="btn btn-outline-gray">Edit</a>
+            <a href="{% url 'app:user-delete' user.id %}" class="btn btn-outline-danger">Delete</a>
+          </td>
+      </tbody>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>There are no users</p>
+  {% endif %}
+{% endblock %}

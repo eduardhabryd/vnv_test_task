@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Group List
+    <a href="{% url 'app:group-create' %}"
+       class="btn btn-primary link-to-page ms-5 mt-5">
+      Add Group
+    </a>
+  </h1>
+  <hr>
+  {% if customgroup_list %}
+    <table class="table w-75">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Desctiption</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for group in customgroup_list %}
+        <tr>
+          <th scope="row">{{ group.id }}</th>
+          <td>{{ group.name }}</td>
+          <td>{{ group.description }}</td>
+          <td>
+            <a href="{% url 'app:group-update' group.id %}" class="btn btn-outline-gray btn-sm">Edit</a>
+            {% if not group.users.exists %}
+            <a href="{% url 'app:group-delete' group.id %}" class="btn btn-outline-danger btn-sm ms-2">Delete</a>
+            {% endif %}
+          </td>
+      </tbody>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>There are no groups</p>
+  {% endif %}
+{% endblock %}
