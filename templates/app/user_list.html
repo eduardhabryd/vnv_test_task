@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    User List
+    <a href=""
+       class="btn btn-primary link-to-page ms-5 mt-5">
+      Create
+    </a>
+  </h1>
+  <hr>
+  {% if user_list %}
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Email</th>
+        <th scope="col">Group</th>
+        <th scope="col">Admin</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for user in user_list %}
+        <tr>
+          <th scope="row">{{ user.id }}</th>
+          <td>{{ user.email }}</td>
+          <td>{{ user.groups }}</td>
+          <td>{{ user.is_staff }}</td>
+          <td><a href="" class="btn btn-outline-gray">Edit User</a></td>
+      </tbody>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>There are no users</p>
+  {% endif %}
+{% endblock %}
