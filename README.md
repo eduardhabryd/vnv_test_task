@@ -5,8 +5,17 @@ A Test Task for VNV Solutions
 
 Welcome to the Users and Groups Django Project, a web application designed to manage users and groups. This project allows you to effortlessly create, update, and delete users and groups. Additionally, it comes equipped with some important features to ensure data integrity and consistency.
 
-## 🚀 Installing via GitHub
+## 🚀 Getting Started 
 ___
+
+### ⚙️ Installing via GitHub
+___
+
+- Python 3 must be installed
+- Create .evn using .env.sample
+- Specify `DB_TYPE=sqlite` inside .env to be able to run localy
+- Run these commands:
+
 ```shell
 git clone https://github.com/eduardhabryd/vnv_test_task.git
 cd vnv_test_task
@@ -16,7 +25,23 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
+### Run with Docker 🐳
+___
 
+To run the project using Docker, follow these steps:
+
+- Clone and open folder in terminal:
+  ```shell
+  git clone https://github.com/eduardhabryd/vnv_test_task.git
+  cd vnv_test_task
+  ```
+- Install Docker if it's not already installed. You can download it [here](https://www.docker.com/products/docker-desktop)
+- Create a .env file using .env.sample and specify `DB_TYPE=postgres` inside the .env to run the project with Docker.
+- Run the following command to build and start the Docker containers:
+
+  ```shell
+  docker-compose up --build
+  ```
 
 ## 🌟 Key Features
 ___
