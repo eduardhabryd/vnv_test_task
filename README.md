@@ -21,7 +21,7 @@ python manage.py runserver
 ## 🌟 Key Features
 ___
 
-### Endpoints
+### 📡 Endpoints
 The Users and Groups Django Project provides the following endpoints for managing users and groups:
 
 - Users:
@@ -34,7 +34,7 @@ The Users and Groups Django Project provides the following endpoints for managin
   - groups/<pk>/update: Update group information.
   - groups/<pk>/delete: Delete a group.
 
-### Data Integrity
+### 🔒 Data Integrity
 
 The project enforces data integrity by preventing the deletion of a group that contains users. This ensures that your data remains consistent and accurate.
 
